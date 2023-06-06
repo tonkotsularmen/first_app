@@ -1,0 +1,22 @@
+<div class='p-top'>
+  <table border="1" class= 'p-top__introduce'>
+    <tr>
+    <th>名前</th>
+    <th>年齢</th>
+    <th>血液型</th>
+    <th>婚姻関係</th>
+    <th></th>
+    </tr>
+    <% @users.each do |user| %>
+      <tr>
+      <td><%= user.name %></td>
+      <td><%= "#{user.age}歳" %></td>
+      <td><%= select :blood_type, :name, options_for_select(User.blood_types.keys.map{|k| [k, k]},
+          selected: user.blood_type), {}, { class: 'js-blood_type form-control', data: { id: user.id } } %>
+      </td>
+      <td><%= "#{user.is_married}" %></td>
+      <td></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

@@ -1,0 +1,25 @@
+<h2 class="mt-3">User保存</h2>
+  <%= form_with model: @user do |f| %>
+    <div class="form-group">
+      <label for="Name">Name</label>
+        <p><%= f.text_field :name, id:"Name", class:"form-control name" %></p>
+    </div>
+    <div class="form-group">
+      <label for="Age">Age</label>
+        <p><%= f.text_field :age, id:"Age", class:"form-control age" %></p>
+    </div>
+    <div class="form-group">
+      <label for="Blood_type">Blood-type</label>
+        <p><%= f.select :blood_type, User.blood_types.keys.map {|k| [k, k]}, {}, { class: 'form-control', style: 'margin-bottom: 15px;', data: {} } %></p>
+    </div>
+    <div class="form-group">
+      <label for="is_married">is-married</label>
+        <p><%= f.text_field :is_married, id:"is_married", class:"form-control is_married" %></p>
+        <!-- f.select :is_married, User.is_married.keys.map {|k| [k, k]}, {}, { class: 'form-control', style: 'margin-bottom: 15px;', data: {} } これだとエラー-->
+    </div>
+    <div class="form-group">
+      <%= f.submit '保存', class:"btn btn-success" %>
+    </div>
+  <% end %>
+
+
